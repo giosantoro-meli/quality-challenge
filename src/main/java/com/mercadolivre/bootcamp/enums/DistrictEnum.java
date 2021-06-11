@@ -1,5 +1,7 @@
 package com.mercadolivre.bootcamp.enums;
 
+import com.mercadolivre.bootcamp.exceptions.DistrictException;
+
 import java.util.Arrays;
 
 public enum DistrictEnum {
@@ -27,6 +29,6 @@ public enum DistrictEnum {
     public static Double getSquareFootValue(String districtName){
         return Arrays.stream(DistrictEnum.values())
                 .filter(districtEnum -> districtEnum.toString().equalsIgnoreCase(districtName))
-                .findFirst().get().getSquareFootValue();
+                .findFirst().orElseThrow(DistrictException::new).getSquareFootValue();
     }
 }
