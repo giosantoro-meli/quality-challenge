@@ -7,7 +7,6 @@ import com.mercadolivre.bootcamp.enums.DistrictEnum;
 import com.mercadolivre.bootcamp.services.CalculateService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CalculateServiceImpl implements CalculateService {
