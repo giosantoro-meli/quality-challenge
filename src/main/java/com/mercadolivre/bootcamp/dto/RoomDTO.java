@@ -1,8 +1,20 @@
 package com.mercadolivre.bootcamp.dto;
 
+import javax.validation.constraints.*;
+
 public class RoomDTO {
+
+    @NotBlank(message = "Room name cannot be empty")
+    @Size(max = 30, message = "Room name size must not exceed 30 characters")
+    @Pattern(regexp = "^([A-Z]+)([a-z]|[A-Z]|[0-9]|\\s)+", message = "Room name must start with a uppercase letter")
     private String name;
+
+    @NotBlank(message = "Room width cannot be empty")
+    @Max(value = 25, message = "Room width cannot be longer than 25m")
     private Double width;
+
+    @NotBlank(message = "Room length cannot be empty")
+    @Max(value = 33, message = "Room width cannot be longer than 33m")
     private Double length;
 
     public RoomDTO() {
