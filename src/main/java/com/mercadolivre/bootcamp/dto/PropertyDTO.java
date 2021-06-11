@@ -8,8 +8,7 @@ public class PropertyDTO {
     private String district;
     private List<RoomDTO> rooms = new ArrayList<>();
 
-    public PropertyDTO() {
-    }
+    public PropertyDTO() {}
 
     public PropertyDTO(String name, String district) {
         this.name = name;
