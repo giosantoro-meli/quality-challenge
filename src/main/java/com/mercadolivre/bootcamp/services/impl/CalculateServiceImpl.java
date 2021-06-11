@@ -3,6 +3,7 @@ package com.mercadolivre.bootcamp.services.impl;
 import com.mercadolivre.bootcamp.dto.PropertyDTO;
 import com.mercadolivre.bootcamp.dto.PropertyResponseDTO;
 import com.mercadolivre.bootcamp.dto.RoomDTO;
+import com.mercadolivre.bootcamp.enums.DistrictEnum;
 import com.mercadolivre.bootcamp.services.CalculateService;
 
 import java.util.ArrayList;
@@ -14,7 +15,12 @@ public class CalculateServiceImpl implements CalculateService {
 
     @Override
     public PropertyResponseDTO calculate(PropertyDTO propertyDTO) {
-        return null;
+        PropertyResponseDTO propertyResponseDTO = new PropertyResponseDTO(propertyDTO);
+        propertyResponseDTO.setSquareFeet(calculatePropertyTotalSquareFeet(propertyDTO));
+        setBiggestRoom(propertyDTO, propertyResponseDTO);
+        propertyResponseDTO.setPrice(calculatePropertyValue(propertyDTO));
+
+        return propertyResponseDTO;
     }
 
     @Override
@@ -55,6 +61,6 @@ public class CalculateServiceImpl implements CalculateService {
         for (RoomDTO room: propertyDTO.getRooms()) {
             totalArea += calculateRoomSquareFeet(room);
         }
-        return totalArea;
+        return totalArea * DistrictEnum.getSquareFootValue(propertyDTO.getDistrict());
     }
 }
