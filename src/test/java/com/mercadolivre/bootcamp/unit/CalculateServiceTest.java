@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class CalculateServiceTest {
 
@@ -36,25 +38,25 @@ class CalculateServiceTest {
     @Test
     void calculateRoomSquareFeetTest() {
         Double result = calculateService.calculateRoomSquareFeet(roomDTOList.get(0));
-        Assertions.assertEquals(20.0, result);
+        assertEquals(20.0, result);
     }
 
     @Test
     void calculatePropertyTotalSquareFeetTest() {
         Double result = calculateService.calculatePropertyTotalSquareFeet(propertyDTO);
-        Assertions.assertEquals(86.8, result);
+        assertEquals(86.8, result);
     }
 
     @Test
     void setBiggestRoomTest() {
         PropertyResponseDTO propertyResponseDTO = new PropertyResponseDTO();
         calculateService.setBiggestRoom(propertyDTO, propertyResponseDTO);
-        Assertions.assertEquals(propertyDTO.getRooms().get(2), propertyResponseDTO.getBiggest());
+        assertEquals(propertyDTO.getRooms().get(2), propertyResponseDTO.getBiggest());
     }
 
     @Test
     void calculatePropertyValueTest() {
         Double result = calculateService.calculatePropertyValue(propertyDTO);
-        Assertions.assertEquals(450492.0, result);
+        assertEquals(450492.0, result);
     }
 }
