@@ -6,13 +6,13 @@ import com.mercadolivre.bootcamp.dto.RoomDTO;
 
 public interface CalculateService {
 
-    public PropertyResponseDTO calculate(PropertyDTO propertyDTO);
+    PropertyResponseDTO calculate(PropertyDTO propertyDTO);
 
-    public Double calculateRoomSquareFeet(RoomDTO roomDTO);
+    Double calculateRoomSquareFeet(RoomDTO roomDTO);
 
-    public Double calculatePropertyTotalSquareFeet(PropertyDTO propertyDTO);
+    Double calculatePropertyTotalSquareFeet(PropertyDTO propertyDTO);
 
-    public void setBiggestRoom(PropertyDTO propertyDTO, PropertyResponseDTO propertyResponseDTO);
+    void setBiggestRoom(PropertyDTO propertyDTO, PropertyResponseDTO propertyResponseDTO);
 
-    public Double calculatePropertyValue(PropertyDTO propertyDTO);
+    Double calculatePropertyValue(PropertyDTO propertyDTO);
 }

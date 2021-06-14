@@ -9,11 +9,13 @@ public class RoomDTO {
     @Pattern(regexp = "^([A-Z]+)([a-z]|[A-Z]|[0-9]|\\s)+", message = "Room name must start with a uppercase letter")
     private String name;
 
-    @NotBlank(message = "Room width cannot be empty")
+    @NotNull(message = "Room width cannot be empty")
+    @Positive
     @Max(value = 25, message = "Room width cannot be longer than 25m")
     private Double width;
 
-    @NotBlank(message = "Room length cannot be empty")
+    @NotNull(message = "Room length cannot be empty")
+    @Positive
     @Max(value = 33, message = "Room width cannot be longer than 33m")
     private Double length;
 

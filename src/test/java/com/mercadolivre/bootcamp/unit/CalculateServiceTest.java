@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class CalculateServiceImplTest {
+class CalculateServiceTest {
 
     CalculateService calculateService = new CalculateServiceImpl();
     List<RoomDTO> roomDTOList = new ArrayList<>();
@@ -34,25 +34,26 @@ class CalculateServiceImplTest {
     }
 
     @Test
-    void calculateRoomSquareFeet() {
+    void calculateRoomSquareFeetTest() {
         Double result = calculateService.calculateRoomSquareFeet(roomDTOList.get(0));
         Assertions.assertEquals(20.0, result);
     }
 
     @Test
-    void calculatePropertyTotalSquareFeet() {
+    void calculatePropertyTotalSquareFeetTest() {
         Double result = calculateService.calculatePropertyTotalSquareFeet(propertyDTO);
         Assertions.assertEquals(86.8, result);
     }
 
     @Test
-    void setBiggestRoom() {
-        Double result = propertyDTO.getRooms().stream().mapToDouble(x -> x.getLength() * x.getWidth()).max().getAsDouble();
-        Assertions.assertEquals(32.0, result);
+    void setBiggestRoomTest() {
+        PropertyResponseDTO propertyResponseDTO = new PropertyResponseDTO();
+        calculateService.setBiggestRoom(propertyDTO, propertyResponseDTO);
+        Assertions.assertEquals(propertyDTO.getRooms().get(2), propertyResponseDTO.getBiggest());
     }
 
     @Test
-    void calculatePropertyValue() {
+    void calculatePropertyValueTest() {
         Double result = calculateService.calculatePropertyValue(propertyDTO);
         Assertions.assertEquals(450492.0, result);
     }
